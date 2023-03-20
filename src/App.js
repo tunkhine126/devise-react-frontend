@@ -15,7 +15,7 @@ function App() {
   }
 
   return (
-    <div className="App">
+    <div className="App flex flex-col items-center justify-center px-6 pt-8 mx-auto md:h-screen pt:mt-0 dark:bg-gray-900">
       <BrowserRouter>
         <Routes>
           <Route 

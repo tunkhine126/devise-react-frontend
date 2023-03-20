@@ -1,10 +1,10 @@
-import React, { Component } from 'react';
+import React from 'react';
 
 const Dashboard = (props) => {
   const { loggedInStatus, user } = props
   return(
     <div>
-      <h1 className="text-3xl font-bold underline text-center">
+      <h1 className="text-3xl font-bold underline text-center text-white">
         DASHBOARD
       </h1>
       <h2>Logged in status: {`${loggedInStatus}`}</h2>
