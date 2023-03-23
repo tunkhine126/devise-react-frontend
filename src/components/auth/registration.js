@@ -30,24 +30,23 @@ function Registration(props) {
     })
   }
 
-  return(
-    <div className="px-2 sm:px4 items-center justify-center w-full h-full bg-white rounded-lg shadow lg:flex md:mt-0 lg:max-w-screen-lg 2xl:max:max-w-screen-lg xl:p-0 dark:bg-gray-800">
-      <div className="w-full p-6 space-y-8 sm:p-8 lg:p-16 lg:py-0 items-center justify-center">
-          <h2 className="p-2 text-2xl text-center font-bold text-gray-900 lg:text-3xl dark:text-white">
-            Sign up
-          </h2>
-          {registrationErrors && (
-          <div className="pb-3">
-            <div className="bg-error pb-3 pt-3 flex justify-center">
-              <div className="text-color-errorHeader text-sm text-white tracking-wide pt-2">
-                <span role="img" aria-label="thinking_face">🤔</span>
-                <span>{} {`${registrationErrors}`}</span>
-              </div>
+  return(    
+    <div className="w-full p-6 space-y-8 sm:p-8 lg:p-16 lg:py-0 items-center justify-center">
+        <h2 className="p-2 text-2xl text-center font-bold text-gray-900 lg:text-3xl dark:text-white">
+          Sign up
+        </h2>
+        {registrationErrors && (
+        <div className="pb-3">
+          <div className="bg-error pb-3 pt-3 flex justify-center">
+            <div className="text-color-errorHeader text-sm text-white tracking-wide pt-2">
+              <span role="img" aria-label="thinking_face">🤔</span>
+              <span>{} {`${registrationErrors}`}</span>
             </div>
           </div>
-        )}
+        </div>
+      )}      
         <form className="m-8 p-4 space-y-6 items-center justify-center" onSubmit={handleSubmit}>
-          <div className="flex mx-3 mb-2 items-center justify-center">
+          <div className="flex flex-col mx-3 mb-2 items-center justify-center">
             <div className="w-full md:w-1/2 p-3 mb-3 md:mb-0">
               <label htmlFor="email" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
                 Email
@@ -95,8 +94,11 @@ function Registration(props) {
             </button>
           </div>
         </form>
+        <div class="flex flex-row p-6 space-y-8 sm:p-8 lg:p-16 lg:py-0 items-center justify-center text-sm font-medium text-gray-500 dark:text-gray-400">
+          Already have an account?
+          <a href="/login" class="text-primary-700 hover:underline dark:text-primary-500 pl-1 sm:pl-2">Login</a>
+        </div>
       </div>
-    </div>
   )
 }
 

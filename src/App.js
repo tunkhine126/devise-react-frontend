@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import axios from 'axios';
 import Home from './components/home'
 import Dashboard from './components/dashboard'
 import Login from './components/auth/Login';
@@ -14,8 +15,15 @@ function App() {
     setUser(data.user)
   }
 
+  // const checkLoginStatus = () =>{
+  //   axios.get("http://localhost:3000/logged_in?")
+  //   .then(response => { console.log("Response:", response)})
+  //   .catch(error => { console.log("Errors:", error)})
+  // }
+
+  useEffect( checkLoginStatus, [])
   return (
-    <div className="App flex flex-col items-center justify-center px-6 pt-8 mx-auto md:h-screen pt:mt-0 dark:bg-gray-900">
+    <div className="App flex flex-col items-center justify-center p-6 m-auto md:h-screen pt:mt-0 dark:bg-gray-900">
       <BrowserRouter>
         <Routes>
           <Route 

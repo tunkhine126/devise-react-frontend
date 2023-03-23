@@ -89,7 +89,7 @@ function Login(props) {
         </form>
         <div class="flex flex-row p-6 space-y-8 sm:p-8 lg:p-16 lg:py-0 items-center justify-center text-sm font-medium text-gray-500 dark:text-gray-400">
           Not registered? 
-          <a href="/" class="text-primary-700 hover:underline dark:text-primary-500">Create account</a>
+          <a href="/" class="text-primary-700 hover:underline dark:text-primary-500 pl-1 sm:pl-2">Create account</a>
         </div>
       </div>
     </div>
