@@ -7,21 +7,15 @@ import Login from './components/auth/Login';
 
 function App() {
 
-  const [loggedInStatus, setLoggedInSatus] = useState(false)
+  const [loggedInStatus, setLoggedInStatus] = useState(false)
   const [user, setUser] = useState({})
 
   const handleLogin = (data) => {
-    setLoggedInSatus(true)
+    setLoggedInStatus(true)
+    console.log('user data:', data)
     setUser(data.user)
   }
 
-  // const checkLoginStatus = () =>{
-  //   axios.get("http://localhost:3000/logged_in?")
-  //   .then(response => { console.log("Response:", response)})
-  //   .catch(error => { console.log("Errors:", error)})
-  // }
-
-  useEffect( checkLoginStatus, [])
   return (
     <div className="App flex flex-col items-center justify-center p-6 m-auto md:h-screen pt:mt-0 dark:bg-gray-900">
       <BrowserRouter>

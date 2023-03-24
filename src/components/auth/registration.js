@@ -3,23 +3,27 @@ import axios from 'axios';
 
 function Registration(props) {
   const { handleSuccessfulAuthorization } = props
+  const [firstName, setFirstName] = useState('')
+  const [lastName, setLastName] = useState('')
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [password_confirmation, setPassword_confirmation] = useState('');
+  const [passwordConfirmation, setPasswordConfirmation] = useState('');
   const [registrationErrors, setRegistrationErrors] = useState('');
 
   const handleSubmit = (e) => {
     e.preventDefault()
     
-    axios.post("http://localhost:3000/signup", {
+    axios.post("http://localhost:3000/api/v1/users", {
       user: {
-        email,
-        password,
-        password_confirmation
+        first_name: firstName ,
+        last_name: lastName,
+        email: email,
+        password: password,
+        password_confirmation: passwordConfirmation
       }
     }
     ).then(response => {
-      if (response.data.message === 'Signed up successfully.') {
+      if (response.statusText === 'OK') {
         handleSuccessfulAuthorization(response.data)
       }
       console.log("Registration response:", response);
@@ -48,6 +52,34 @@ function Registration(props) {
         <form className="m-8 p-4 space-y-6 items-center justify-center" onSubmit={handleSubmit}>
           <div className="flex flex-col mx-3 mb-2 items-center justify-center">
             <div className="w-full md:w-1/2 p-3 mb-3 md:mb-0">
+              <label htmlFor="firstName" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+                First name
+              </label>
+              <input
+              className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+                id="firstName"
+                type="text"
+                placeholder="Your first name..."
+                onChange={(e) => setFirstName(e.target.value)}
+                label="First name"
+                required
+              />
+            </div>
+            <div className="w-full md:w-1/2 p-3 mb-3 md:mb-0">
+              <label htmlFor="lastName" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+                Last name
+              </label>
+              <input
+              className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+                id="lastName"
+                type="text"
+                placeholder="Your last name..."
+                onChange={(e) => setLastName(e.target.value)}
+                label="Last name"
+                required
+              />
+            </div>
+            <div className="w-full md:w-1/2 p-3 mb-3 md:mb-0">
               <label htmlFor="email" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
                 Email
               </label>
@@ -63,12 +95,12 @@ function Registration(props) {
             </div>
             <div className="w-full md:w-1/2 p-3">
               <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-              htmlFor="grid-password">
+              htmlFor="password">
                 Password
               </label>
               <input className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
               type="password" 
-              placeholder="password"
+              placeholder="Password"
               onChange={(e) => setPassword(e.target.value)}
               label="password"
               required
@@ -76,14 +108,14 @@ function Registration(props) {
             </div>
             <div className="w-full md:w-1/2 p-3">
               <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-              htmlFor="grid-password">
+              htmlFor="password">
                 Password confirmation
               </label>
               <input className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
               type="password_confirmation" 
-              placeholder="password"
-              onChange={(e) => setPassword(e.target.value)}
-              label="password"
+              placeholder="Password confirmation"
+              onChange={(e) => setPasswordConfirmation(e.target.value)}
+              label="password confirmation"
               required
               />
             </div>
@@ -94,9 +126,9 @@ function Registration(props) {
             </button>
           </div>
         </form>
-        <div class="flex flex-row p-6 space-y-8 sm:p-8 lg:p-16 lg:py-0 items-center justify-center text-sm font-medium text-gray-500 dark:text-gray-400">
+        <div className="flex flex-row p-6 space-y-8 sm:p-8 lg:p-16 lg:py-0 items-center justify-center text-sm font-medium text-gray-500 dark:text-gray-400">
           Already have an account?
-          <a href="/login" class="text-primary-700 hover:underline dark:text-primary-500 pl-1 sm:pl-2">Login</a>
+          <a href="/login" className="text-primary-700 hover:underline dark:text-primary-500 pl-1 sm:pl-2">Login</a>
         </div>
       </div>
   )
