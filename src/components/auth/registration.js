@@ -29,8 +29,8 @@ function Registration(props) {
       console.log("Registration response:", response);
     })
     .catch(error => {
-      setRegistrationErrors(error)
-      console.log("Registration error:", error)
+      setRegistrationErrors(error.response.data.error)
+      console.log("Registration error:", error.response.data.error)
     })
   }
 

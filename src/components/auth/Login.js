@@ -24,14 +24,14 @@ function Login(props) {
       }
     }
     ).then(response => {
-      if (response.data.message === 'You are logged in.') {
+      if (response.statusText === 'Created') {
         handleSuccessfulLogin(response.data)
       }
       console.log("Login response:", response);
     })
     .catch(error => {
-      setLoginErrors(error.response.data.message)
-      console.log("Login error:", error.response.data.message)
+      setLoginErrors(error.response.data.error)
+      console.log("Login error:", error.response.data.error)
     })
   }
 
